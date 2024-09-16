@@ -4,7 +4,6 @@
   edition = "2021"
   authors = ["princemuel <vansomecsam@gmail.com>"]
 
-
 [lib]
   crate-type = ["cdylib"]
 
