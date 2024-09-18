@@ -4,7 +4,13 @@
   "collaborators": [
     "princemuel <vansomecsam@gmail.com>"
   ],
+  "description": "Yet another calculator webapp built with Rust and Web Assembly",
   "version": "0.1.0",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/princemuel/markown-parser"
+  },
   "files": [
     "index_bg.wasm",
     "index.js",

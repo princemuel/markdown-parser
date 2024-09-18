@@ -1,6 +1,7 @@
 /* tslint:disable */
 /* eslint-disable */
 /**
-* @param {string} item
+* @param {string} input
+* @returns {string}
 */
-export function run_alert(item: string): void;
+export function parse(input: string): string;
