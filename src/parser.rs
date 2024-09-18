@@ -8,22 +8,19 @@ pub fn parse(source: String) -> String {
 }
 
 impl Parser {
-    // fn new() -> Self {
-    //     Parser { pos: 0, input: String::new() }
-    // }
     fn parse_lines(&mut self) -> String {
         let mut result = String::new();
 
         loop {
-            self.consume_whitspace();
+            self.consume_whitespace();
             if self.end_of_line() {
                 break;
             }
             result.push_str(&self.parse_line());
         }
-
         result
     }
+
     fn parse_line(&mut self) -> String {
         match self.next_char() {
             | '#' => self.parse_heading(),
@@ -42,50 +39,51 @@ impl Parser {
 
     fn parse_list(&mut self) -> String {
         self.consume_char();
-        self.consume_whitspace();
+        self.consume_whitespace();
 
         let text = self.parse_text();
         create_html_element("li".to_string(), text)
     }
+
     fn parse_heading(&mut self) -> String {
         let pound = self.consume_while(|c| c == '#');
-        self.consume_whitspace();
+        self.consume_whitespace();
         let text = self.parse_text();
 
         create_html_element(format!("h{}", pound.len()), text)
     }
+
     fn parse_text(&mut self) -> String {
         self.consume_while(|c| !is_newline(c))
     }
 
-    fn consume_whitspace(&mut self) {
+    fn consume_whitespace(&mut self) {
         self.consume_while(char::is_whitespace);
     }
 
-    fn consume_while<F>(&mut self, cb: F) -> String
+    fn consume_while<F>(&mut self, callback: F) -> String
     where
         F: Fn(char) -> bool,
     {
         let mut result = String::new();
-        while !self.end_of_line() && cb(self.next_char()) {
+        while !self.end_of_line() && callback(self.next_char()) {
             result.push(self.consume_char());
         }
         result
     }
+
     fn consume_char(&mut self) -> char {
         let mut iter = self.input[self.pos..].char_indices();
         let (_, current_char) = iter.next().unwrap();
         let (next_pos, _) = iter.next().unwrap_or((1, ' '));
-        self.pos = next_pos;
+        self.pos += next_pos;
         current_char
     }
 
     fn next_char(&self) -> char {
         self.input[self.pos..].chars().next().unwrap()
     }
-    fn starts_with(&self, s: &str) -> bool {
-        self.input[self.pos..].starts_with(s)
-    }
+
     fn end_of_line(&self) -> bool {
         self.pos >= self.input.len()
     }
