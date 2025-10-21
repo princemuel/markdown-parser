@@ -2,7 +2,7 @@
 
 This project is being developed to help Exercism polyglots avoid choice paralysis as that kills momentum. It is a work in progress. 
 
-The working MVP version is on the [feat/version-py][py-branch] branch
+The working MVP version is on the [feat/version-py][py-branch] branch, as a CLI tool
 
 [py-branch]: https://github.com/princemuel/exercism-scheduler/tree/feat/version-py
 
