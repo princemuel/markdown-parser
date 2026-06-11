@@ -1283,34 +1283,8 @@ tmp-*
 *.pem
 *.ignored.*
 
-# Build artifacts
-build/
-dist/
-*.egg-info/
-
-# Python cache
-__pycache__/
-# Python-generated files
-__pycache__/
-*.py[oc]
-*.py[cod]
-*$py.class
-build/
-dist/
-wheels/
-*.egg-info
-*.so
-
-# Virtual environments
-.venv
-
-# Database files (if you don't want to commit your actual data)
-*.db
-*.sqlite
-*.sqlite3
-# Keep schema and migrations
-!/src/migrations/
-
 styled-system
 prisma.rs
-scripts/update_readme
+scripts/readmes
+.pnp.cjs
+.pnp.loader.mjs
